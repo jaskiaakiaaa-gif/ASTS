@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>asts program</title>
+</head>
+
+<body>
+  <h1>Data Peserta</h1>
+  <script>
+    let jumlahPeserta = prompt("Berapa jumlah peserta?");
+    let tabel = `
+      <table border="1" cellpadding="8" cellspacing="0">
+        <tr>
+          <th>No</th>
+          <th>Nama Peserta</th>
+          <th>Umur Peserta</th>
+          <th>Status</th>
+          <th>Keterangan</th>
+        </tr>
+    `;
+
+    // perulangan input sesuai jumlah peserta
+    for (let i = 1; i <= jumlahPeserta; i++) {
+      let namaPeserta = prompt("Masukkan nama peserta ke-" + i + ":");
+      let umurPeserta = parseInt(prompt("Berapa umur " + namaPeserta + "?"));
+      let statusPeserta = prompt("Apakah " + namaPeserta + " sudah menikah atau belum menikah?");
+      let hakPilih = "";
+
+      if (umurPeserta >= 17 || statusPeserta.toLowerCase() === "sudah menikah") {
+        hakPilih = "Sudah memiliki hak pilih";
+      } else {
+        hakPilih = "Belum memiliki hak pilih";
+      }
+
+      // tambahkan baris data ke tabel
+      tabel += `
+        <tr>
+          <td>${i}</td>
+          <td>${namaPeserta}</td>
+          <td>${umurPeserta}</td>
+          <td>${statusPeserta}</td>
+          <td>${hakPilih}</td>
+        </tr>
+      `;
+    }
+
+    tabel += `</table>`;
+
+    document.write(tabel);
+  </script>
+</body>
